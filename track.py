@@ -107,7 +107,7 @@ def detect(opt):
             else:
                 p, s, im0 = path, '', im0s
 
-            im0 = cv2.resize(im0, (0,0), fx=0.5, fy=0.5)
+            #im0 = cv2.resize(im0, (0,0), fx=0.5, fy=0.5)
             h_img, w_img, channels = im0.shape[0], im0.shape[1], im0.shape[2]
             if iter == 1:
                 iter = 0
