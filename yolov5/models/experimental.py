@@ -97,7 +97,6 @@ def attempt_load(weights, map_location=None, inplace=True, fuse=True):
         else:
             model.append(ckpt['ema' if ckpt.get('ema') else 'model'].float().eval())  # without layer fuse
 
-
     # Compatibility updates
     for m in model.modules():
         if type(m) in [nn.Hardswish, nn.LeakyReLU, nn.ReLU, nn.ReLU6, nn.SiLU, Detect, Model]:
@@ -113,3 +112,4 @@ def attempt_load(weights, map_location=None, inplace=True, fuse=True):
             setattr(model, k, getattr(model[-1], k))
         model.stride = model[torch.argmax(torch.tensor([m.stride.max() for m in model])).int()].stride  # max stride
         return model  # return ensemble
+
