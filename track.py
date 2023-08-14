@@ -162,19 +162,19 @@ def detect(opt):
                     overlay = cv2.addWeighted(im0, 1, heatmap, 0.5, 0)
                     final_img = cv2.hconcat([heatmap, overlay])
 
-                    save_path = "output_video"
-                    if vid_path != save_path:  # new video
-                        vid_path = save_path
-                        if isinstance(vid_writer, cv2.VideoWriter):
-                            vid_writer.release()  # release previous video writer
-                        else:  # stream
-                            # fps, w, h = 3, im0.shape[1], im0.shape[0]
-                            fps, w, h = 3, final_img.shape[1], final_img.shape[0]
-                            save_path += '.avi'
+                    # save_path = "output_video"
+                    # if vid_path != save_path:  # new video
+                    #     vid_path = save_path
+                    #     if isinstance(vid_writer, cv2.VideoWriter):
+                    #         vid_writer.release()  # release previous video writer
+                    #     else:  # stream
+                    #         # fps, w, h = 3, im0.shape[1], im0.shape[0]
+                    #         fps, w, h = 3, final_img.shape[1], final_img.shape[0]
+                    #         save_path += '.avi'
 
-                        vid_writer = cv2.VideoWriter(save_path, cv2.VideoWriter_fourcc(*'MJPG'), fps, (w, h))
+                    #     vid_writer = cv2.VideoWriter(save_path, cv2.VideoWriter_fourcc(*'MJPG'), fps, (w, h))
                     
-                    vid_writer.write(final_img)
+                    # vid_writer.write(final_img)
                     cv2.imshow(p, final_img)
     
             else:
